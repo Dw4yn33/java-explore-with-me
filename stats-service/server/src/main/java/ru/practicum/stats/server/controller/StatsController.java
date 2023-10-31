@@ -27,7 +27,9 @@ import java.util.List;
 public class StatsController {
 
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     private final StatsService statsService;
+
     @GetMapping("stats")
     public List<StatResponse> getStats(@RequestParam @DateTimeFormat(pattern = DATE_TIME_FORMAT) LocalDateTime start,
                                        @RequestParam @DateTimeFormat(pattern = DATE_TIME_FORMAT) LocalDateTime end,
