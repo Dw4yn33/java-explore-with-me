@@ -27,7 +27,6 @@ import java.util.List;
 public class StatsController {
 
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
     private final StatsService statsService;
 
     @GetMapping("stats")
