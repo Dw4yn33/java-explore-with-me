@@ -1,5 +1,28 @@
 version: '3.1'
 services:
+  ewm-service:
+    ports:
+      - "8080:8080"
+    build: ./ewm-service
+    container_name: ewm-service
+    depends_on:
+      - ewm-db
+      - stats-server
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm
+      - SPRING_DATASOURCE_USERNAME=ewm
+      - SPRING_DATASOURCE_PASSWORD=root
+
+  ewm-db:
+    image: postgres:14-alpine
+    container_name: ewm-db
+    ports:
+      - "6542:5432"
+    environment:
+      - POSTGRES_DB=ewm
+      - POSTGRES_USER=ewm
+      - POSTGRES_PASSWORD=root
+
   stats-server:
     ports:
       - "9090:9090"
@@ -20,28 +43,4 @@ services:
     environment:
       - POSTGRES_DB=stats
       - POSTGRES_USER=stat
-      - POSTGRES_PASSWORD=root
-
-  ewm-service:
-    ports:
-      - "8080:8080"
-      - "8081:8081"
-    build: ./ewm-service
-    container_name: ewm-service
-    depends_on:
-      - ewm-db
-      - stats-server
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm
-      - SPRING_DATASOURCE_USERNAME=ewm
-      - SPRING_DATASOURCE_PASSWORD=root
-
-  ewm-db:
-    image: postgres:14-alpine
-    container_name: ewm-db
-    ports:
-      - "6542:5432"
-    environment:
-      - POSTGRES_DB=ewm
-      - POSTGRES_USER=ewm
       - POSTGRES_PASSWORD=root
