@@ -14,15 +14,6 @@ import ru.practicum.ewm.request.controller.RequestPrivateController;
 import ru.practicum.ewm.user.controller.UserAdminController;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = CategoryAdminController.class)
-@ComponentScan(basePackageClasses = CategoryPublicController.class)
-@ComponentScan(basePackageClasses = CompilationAdminController.class)
-@ComponentScan(basePackageClasses = CompilationPublicController.class)
-@ComponentScan(basePackageClasses = EventAdminController.class)
-@ComponentScan(basePackageClasses = EventPrivateController.class)
-@ComponentScan(basePackageClasses = EventPublicController.class)
-@ComponentScan(basePackageClasses = RequestPrivateController.class)
-@ComponentScan(basePackageClasses = UserAdminController.class)
 public class EWMServiceApp {
 
     public static void main(String[] args) {
